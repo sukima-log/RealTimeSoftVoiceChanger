@@ -5,10 +5,10 @@ mkdir build
 cd build
 
 if $# > 1 ; then
-    cmake -DCMAKE_TOOLCHAIN_FILE=~/toolchain.cmake -DCMAKE_BUILD_TYPE=Debug ..
+    cmake -DCMAKE_TOOLCHAIN_FILE=./toolchain.cmake -DCMAKE_BUILD_TYPE=Debug ..
 else
     # buildディレクトリ内に入り、cmakeで自動ビルド
-    cmake -DCMAKE_TOOLCHAIN_FILE=~/toolchain.cmake -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DCMAKE_TOOLCHAIN_FILE=./toolchain.cmake -DCMAKE_BUILD_TYPE=Release ..
 fi
 
 # makefileができるので、実行ファイルを作成する
