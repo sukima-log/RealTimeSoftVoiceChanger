@@ -28,7 +28,7 @@ sudo apt-get update
 sudo apt-get install gpg wget -y
 
 # MinGW install
-sudo apt install mingw-w64 -y
+sudo apt install mingw-w64 mingw-w64-tools -y
 
 # version確認
 x86_64-w64-mingw32-gcc --version
@@ -102,11 +102,32 @@ wget https://www.surina.net/soundtouch/soundtouch-2.3.0.tar.gz
 tar zxvf soundtouch-2.3.0.tar.gz
 cd soundtouch-2.3.0
 
-cmake -DCMAKE_INSTALL_PREFIX=/usr/x86_64-w64-mingw32 \
-    -DCMAKE_TOOLCHAIN_FILE=$CURRENT/../toolchain.cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=ON .
+echo "LT_INIT([win32-dll],[-no-undefined])">>configure.ac
+
+./bootstrap
+
+autoconf --install
+
+./configure --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32
+
+echo "libSoundTouch_la_LDFLAGS = -no-undefined">>Makefile.am
+
+automake --add-missing
 
 make
 
 sudo make install
+
+
+# cmake -DCMAKE_INSTALL_PREFIX=/usr/x86_64-w64-mingw32 \
+#     -DCMAKE_TOOLCHAIN_FILE=$CURRENT/../toolchain.cmake \
+#     -DCMAKE_BUILD_TYPE=Release \
+#     -DBUILD_SHARED_LIBS=ON .
+
+# cmake --build .
+
+# cmake --install .
+
+# make
+
+# sudo make install
