@@ -11,8 +11,7 @@ set(CMAKE_SYSTEM_PROCESSOR x86_64)
 
 add_executable(myexe main.cpp)
 
-target_link_libraries(myexe portaudio)
-target_link_libraries(myexe SoundTouch)
+target_link_libraries(myexe portaudio SoundTouch)
 
 # 実行ファイルと依存するライブラリを含むフォルダを指定する
 set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install")
