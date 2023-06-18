@@ -17,6 +17,11 @@ make
 # 実行バイナリに必要な動的ライブラリをCmakeLink.txt記述にしたがってインストール
 make install
 
+# Windows側にMinGWをインストールしていない場合向け
+cp /usr/lib/gcc/x86_64-w64-mingw32/10-posix/libgcc_s_seh-1.dll ./install/bin/
+cp /usr/lib/gcc/x86_64-w64-mingw32/10-posix/libstdc++-6.dll ./install/bin/
+cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll ./install/bin/
+
 # bin以下にアプリを移動
 # cp ./myexe.exe ./install/bin/
 
