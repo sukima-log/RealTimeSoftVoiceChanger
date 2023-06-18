@@ -10,6 +10,8 @@ echo "comment : If you want to proceed, press the Enter key!!"
 echo "======================================================"
 read Wait
 
+sudo apt-get update && apt-get -y install sudo
+
 # environmentに移動
 cd $CURRENT
 
@@ -100,7 +102,7 @@ echo "======================================================"
 read Wait
 
 sudo apt-get update
-sudo apt-get install autoconf automake libtool pkg-config build-essential g++ -y
+sudo apt-get install autoconf automake libtool pkg-config g++ -y
 
 # SoundTouch install
 cd $CURRENT
@@ -115,6 +117,14 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr/x86_64-w64-mingw32 \
     -DCMAKE_TOOLCHAIN_FILE=$CURRENT/../toolchain.cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON .
+
+make
+
+sudo make install
+
+./bootstrap
+
+./configure --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32/
 
 make
 

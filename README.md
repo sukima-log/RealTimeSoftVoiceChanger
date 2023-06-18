@@ -21,8 +21,9 @@
 
 ## ・Dockerを使って環境構築する場合
 
-- Ubuntu環境（WSL2）：
+- Ubuntu環境：
     - `docker_ubuntu.sh`コマンドでDockerの環境構築から、イメージの作成まで行われる。
+    - コンテナ内に入って、`./RealTimeSoftVoiceChanger/environment/environment.sh`を実行 -> 環境構築（一部errorが出るがコンパイルは可能）
 
 - その他環境：
     - [docker_ubuntu.sh]内のコマンドを適宜読み替え
@@ -35,7 +36,8 @@
 - コンテナ確認（STATUS等確認）<br>
 `docker ps -a`<br>
 - コンテナの生成&起動<br>
-`docker run -d -it --name <コンテナ名> <イメージ名>`<br>
+`docker run -d -it --name <コンテナ名> <イメージ名>:<タグ>`<br>
+例：`docker run -d -it --name rtvc rtsvc:1.0`<br>
 - コンテナの起動<br>
 `docker start <コンテナ名>`<br>
 - コンテナの停止<br>
