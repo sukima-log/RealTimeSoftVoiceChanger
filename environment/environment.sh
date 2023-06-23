@@ -27,7 +27,7 @@ read Wait
 sudo apt-get update
 
 # wget install
-sudo apt-get install gpg wget -y
+sudo apt-get install gpg wget git -y
 
 # MinGW install
 sudo apt install mingw-w64 -y
